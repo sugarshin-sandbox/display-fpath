@@ -16,7 +16,7 @@ write file
 ```zsh
 node app.js directory/path/to filename.txt
 
-# Success!! => example.txt
+# Success!! => filename.txt
 ```
 
 ## deps
