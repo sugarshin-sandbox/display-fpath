@@ -1,14 +1,8 @@
-/*!
- * @license display-fname
- * (c) sugarshin
- * License: MIT
- */
-
 var fs = require('fs');
 var glob = require('glob');
 var argv = process.argv;
 
-function displayFname(path, writeFilePath) {
+function displayFpath(path, writeFilePath) {
   glob(path + '/**/*', function(err, files) {
     if (err) return console.log(err);
     var data = files.filter(function(el, i) {
@@ -34,4 +28,4 @@ function writeFile(data, filePath) {
   });
 }
 
-displayFname(argv[2], argv[3]);
+displayFpath(argv[2], argv[3]);

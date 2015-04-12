@@ -1,9 +1,9 @@
 {
-  "name": "display-fname",
-  "description": "Display file name",
-  "repository": "sugarshin/display-fname",
-  "main": "app.js",
+  "name": "display-fpath",
+  "description": "Display file path",
+  "repository": "sugarshin/display-fpath",
   "dependencies": {
-    "glob": "^5.0.3"
+    "glob": "^5.0.3",
+    "recursive-readdir": "^1.2.1"
   }
 }
