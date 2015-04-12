@@ -3,7 +3,7 @@
 Display file name
 
 ```zsh
-node app.js 'directory/path/to'
+node app.js directory/path/to
 
 # directory/path/to/file1.txt
 # directory/path/to/file2.txt
@@ -14,7 +14,9 @@ node app.js 'directory/path/to'
 write file
 
 ```zsh
-node app.js 'directory/path/to' filename.txt
+node app.js directory/path/to filename.txt
+
+# Success!! => example.txt
 ```
 
 ## deps
