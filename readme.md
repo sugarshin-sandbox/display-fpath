@@ -16,7 +16,7 @@ node app3.js directory/path/to
 write file
 
 ```zsh
-node app.js1 directory/path/to filename.txt
+node app1.js directory/path/to filename.txt
 
 # Success!! => filename.txt
 ```
