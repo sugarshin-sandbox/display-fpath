@@ -6,61 +6,42 @@ displayFpath(argv[2]);
 function displayFpath(path) {
   Promise.resolve(path)
     .then(readdir)
-    // .then(each)
-    .then(stats)
-    .then(function (stat, name) {
-      // console.log(stat);
-      // console.log(name);
-      if (stat.isDirectory()) {
-        displayFpath(name);
-      } else {
-        console.log(name);
-      }
-    });
+    .then(getStats)
+    .then(stdout)
 }
 
 function readdir(path) {
   return new Promise(function(resolve, reject) {
     fs.readdir(path, function(err, data) {
       if (err) reject('ERROR: \n' + err);
-      resolve(path + '/' + data);
+      resolve({data: data, path: path});
     });
   });
 }
 
-function each(arr) {
-  arr.forEach(function(el, i) {
-    return new Promise(function(resolve, reject) {
-      resolve(el);
-    });
-  });
-}
-
-// function displayFpath(path) {
-//   fs.readdir(path, function(err, data) {
-//     data.forEach(function(el, i) {
-//       var name = path + '/' + el;
-//       stats(name)
-//         .then(function(stats) {
-//           if (stats.isDirectory()) {
-//             displayFpath(name);
-//           } else {
-//             console.log(name);
-//           }
-//         })
-//         .catch(function(err) {
-//           return console.log('ERROR: \n' + err);
-//         });
-//     });
-//   });
-// }
-
-function stats(path) {
-  console.log(path);
+function _stats(path) {
   return new Promise(function(resolve, reject) {
     fs.stat(path, function(err, stat) {
       if (err) reject(err);
-      resolve(stat, path);
+      resolve({stat: stat, path: path});
     });
+  });
+}
+
+function getStats(pathData) {
+  return Promise.all(
+    pathData.data.map(function(el, i) {
+      return _stats(pathData.path + '/' + el);
+    })
+  );
+}
+
+function stdout(pathData) {
+  pathData.forEach(function(el, i) {
+    if (el.stat.isDirectory()) {
+      displayFpath(el.path);
+    } else {
+      console.log(el.path);
+    }
   });
 }
