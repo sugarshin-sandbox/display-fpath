@@ -6,6 +6,7 @@ Display file path pattern
 node app1.js directory/path/to
 node app2.js directory/path/to
 node app3.js directory/path/to
+node --harmony-generators app4.js directory/path/to
 
 # directory/path/to/file1.txt
 # directory/path/to/file2.txt
@@ -29,3 +30,5 @@ node app1.js directory/path/to filename.txt
   * [recursive-readdir](https://github.com/jergason/recursive-readdir)
 * app3.js
   * No deps
+* app4.js
+  * [co](https://github.com/tj/co)
